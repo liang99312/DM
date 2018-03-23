@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style>
+body, div, table{
+	margin: 0;
+	padding: 0;
+}
+
+table{
+	position: relative;
+	width: 100%;
+	color: #ffffff;
+	font-size: 12px;
+	font-family: 宋体;
+	text-align: center;
+	vertical-align: middle;
+	border: 0;
+	border-spacing: expression(this.cellSpacing=0);
+	border-spacing: 0px;
+	border-collapse:collapse;
+}
+
+td{
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+	background-color: #FFF5A0;
+}
+
+td#btnClose, td#prevYear, td#prevMonth, td#today, td#nextMonth, td#nextYear{
+	color: #000040;
+	background-color: #FFF5A0 !important;
+}
+
+td#btnClose:hover, td#prevYear:hover, td#prevMonth:hover, td#today:hover, td#nextMonth:hover, td#nextYear:hover{
+	color: #FFFFFF;
+	background-color: #FF6347 !important;
+}
+
+select#tmpYearSelect, select#tmpMonthSelect {
+	position: absolute;
+	top: 0px;
+	z-index: 1;
+	display: none;
+}
+
+div{
+	width: 138px;
+	max-width: 138px;
+	height: 180px;
+	border: 1px solid #FF6347;
+}
+
+table#tableHead {
+	height: 19px;
+	text-align: center;
+}
+
+table#tableHead td{
+	border: 0;
+}
+
+td#yearHead, td#monthHead {
+	color: #000040;
+	background-color: #FFFFFF;
+}
+
+td#yearHead:hover, td#monthHead:hover{
+	color: #FFFFFF;
+	background-color: #FF6347;
+}
+
+table#banner td{
+	border: 1px solid #FF6347;
+}
+
+table#tableWeek td{
+	border: solid 1px #FFFFFF;
+	color: #FFFFFF;
+	background-color: #FF6347;
+}
+
+table#tableDay {
+	height: 120px;
+	min-height: 120px;
+	max-height: 120px;
+	max-width: 140px;
+}
+
+table#tableDay td{
+	font-weight: bold;
+	border-top: 1px solid #FFE4C4;
+	border-left: 1px solid #FFE4C4;
+	border-right: 1px solid #FFFFFF;
+	border-bottom: 1px solid #FFFFFF;
+	background-color: #FFFACD;
+}
+
+table#tableDay td:hover {
+	border-top: 1px solid #FFFFFF;
+	border-left: 1px solid #FFFFFF;
+	border-bottom: 1px solid #FFE4C4;
+	border-right: 1px solid #FFE4C4;
+	color: #FFFFFF !important;
+	background-color: #FF6347 !important;
+}
+
+tr>td:first-child {
+	border-left: 0 !important;
+}
+
+tr>td:last-child {
+	border-right: 0 !important;
+}
+</style>
+
+<script type="text/javascript"	src="/js/jquery2.js"></script>
+<script language="javascript">
+	function WebCalendar()
+	{
+		this.daysMonth	= new Array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+		this.day		= new Array(39);			//定义日历展示用的数组
+		this.dayObj		= new Array(39);			//定义日期展示控件数组
+		this.dateStyle	= null;						//保存格式化后日期数组
+		this.objExport	= null;						//日历回传的显示控件
+		this.eventSrc	= null;						//日历显示的触发控件
+		this.inputDate	= null;						//转化外的输入的日期(d/m/yyyy)
+		this.thisYear	= new Date().getFullYear(); //定义年的变量的初始值
+		this.thisMonth	= new Date().getMonth()+ 1; //定义月的变量的初始值
+		this.thisDay	= new Date().getDate();		//定义日的变量的初始值
+		this.today		= this.thisDay +"/"+ this.thisMonth +"/"+ this.thisYear;	//今天(d/m/yyyy)
+		this.calendar	= null;					//日历的层
+		this.dateReg	= "";					//日历格式验证的正则式
+		this.yearFall	= 50;					//定义年下拉框的年差值
+		this.format		= "yyyy-mm-dd";			//回传日期的格式
+		this.timeShow	= false;				//是否返回时间
+		this.drag		= true;				//是否允许拖动
+		this.darkColor	= "#FF6347";		//控件的暗色
+		this.lightColor	= "#FFFFFF";		//控件的亮色
+		this.btnBgColor	= "#FFF5A0";		//控件的按钮背景色
+		this.wordColor	= "#000040";		//控件的文字颜色
+		this.wordDark	= "#DCDCDC";		//控件的暗文字颜色
+		this.dayBgColor	= "#FFFACD";		//日期数字背景色
+		this.todayColor	= "#FF9933";		//今天在日历上的标示背景色
+		this.DarkBorder	= "#FFE4C4";		//日期显示的立体表达色
+	} var cal	= new WebCalendar();
+
+	/**
+	$(document).mousemove(function(e){
+		return;
+		if (parent.WebCalendar.drag && drag){
+			if (o.style.left=='') o.style.left=0;
+			if (o.style.top=='') o.style.top=0;
+			o.style.left = parseInt(o.style.left) + window.event.clientX-cx;
+			o.style.top	= parseInt(o.style.top)	+ window.event.clientY-cy;
+		}
+	});
+	*/
+	
+	$(document).keydown(function(e){
+		var event = $.event.fix(e);
+		var obj = event.target;
+		switch (event.keyCode){
+			case 27 : hiddenCalendar(); break;
+			case 37 : prevM(); break;
+			case 38 : prevY(); break;
+			case 39 : nextM(); break;
+			case 40 : nextY(); break;
+			case 84 : $("#today").click(); break;
+		}
+		event.keyCode=0;
+		return false;
+	});
+	
+	$(document).ready(function(){
+		var str = "";
+		for(var x=0; x<5; x+=1){
+			str += "<tr>";
+			for(var y=0; y<7; y+=1)	str += "<td id='dayCell"+(x*7+y)+"'></td>";
+			str += "</tr>";
+		}
+		$("#tableDay").prepend(str);
+		str = "";
+		for(var x=35; x<39; x+=1) str += "<td id='dayCell"+ x +"'></td>";
+		$("#lastDayLine").prepend(str);
+		
+		for(var i=0; i<39; i+=1){
+			var theDay = cal.dayObj[i] = $("#dayCell"+ i);
+			var d=cal.day[i];
+			
+			theDay.click(function(e){ returnDate(this) });
+
+			/**
+			if ((i<10 && parseInt(d, 10)>20) || (i>27 && parseInt(d, 10)<12)){
+				theDay.css("color", cal.wordDark);
+			}else if (cal.inputDate==d){		//设置输入框里的日期在日历上的颜色
+				theDay.css("background-color" , cal.darkColor);
+				theDay.css("color", cal.lightColor);
+			} else if (d == cal.today){			//设置今天在日历上反应出来的颜色
+				$(this).css("background-color" , cal.todayColor);
+				$(this).css("color", cal.lightColor);
+			}
+
+			
+			/**
+			cal.dayObj[i].mouseover(function(){
+				//$(this).removeClass("out");
+				//$(this).addClass("over");
+				//$(this).css("background-color", "#FF6347");
+				//if(cal.day[$(this).attr("id").substr(7)].split("/")[1] == cal.thisMonth) $(this).css("color", "#FFFFFF");
+			});
+			*/
+			
+			/**
+			cal.dayObj[i].mouseout(function(){
+				var i=$(this).attr("id").substr(7);
+				var d=cal.day[i];
+				//$(this).css("background-color", cal.dayBgColor);
+				//$(this).css("color", cal.wordColor);
+				if ((i<10 && parseInt(d, 10)>20) || (i>27 && parseInt(d, 10)<12))
+						$(this).css("color", cal.wordDark);
+				if (cal.inputDate==d){		//设置输入框里的日期在日历上的颜色
+					$(this).css("background-color" , cal.darkColor);
+					$(this).css("color", cal.lightColor);
+				}
+				if (d == cal.today){			//设置今天在日历上反应出来的颜色
+					$(this).css("background-color" , cal.todayColor);
+					$(this).css("color", cal.lightColor);
+				}
+			});
+			*/
+			
+		}
+		writeCalendar();
+		
+		$("select").blur(function(){ $(this).hide(); });
+		$("#tmpYearSelect").change(function(){
+			cal.thisYear=$(this).val();
+			$(this).hide();
+			writeCalendar();
+		});
+		$("#tmpMonthSelect").change(function(){
+			cal.thisMonth=$(this).val();
+			$(this).hide();
+			writeCalendar();
+		});
+
+		$("#yearHead").click(function(){ funYearSelect(parseInt($(this).html(), 10)); });
+		$("#monthHead").click(function(){ funMonthSelect(parseInt($(this).html(), 10)); });
+		
+		/**
+		$("#prevMonth1").click(function(){ prevM() });
+		$("#nextMonth1").click(function(){ nextM() });
+		*/
+		
+		$("#prevYear").click(function(){ prevY(); });
+		$("#prevMonth").click(function(){ prevM(); });
+		$("#today").click(function(e){ returnDate(this) });
+		$("#nextYear").click(function(){ nextY(); });
+		$("#nextMonth").click(function(){ nextM(); });
+		$("#btnClose").click(function(){ hiddenCalendar(); });
+		//$("#prevYear, #prevMonth, #today, #nextYear, #nextMonth, #btnClose").focus(function(){ $(this).blur(); });
+});
+	
+	//日期自动补零程序
+	function appendZero(n){return(("00"+ n).substr(("00"+ n).length-2));}
+	
+	function writeCalendar()
+	{
+			var y = cal.thisYear;
+			var m = cal.thisMonth; 
+			var d = cal.thisDay;
+			cal.daysMonth[1] = (0==y%4 && (y%100!=0 || y%400==0)) ? 29 : 28;
+			if (!(y<=9999 && y >= 1000 && parseInt(m, 10)>0 && parseInt(m, 10)<13 && parseInt(d, 10)>0)){
+					alert("对不起，你输入了错误的日期！"+y+"-"+m+"-"+d);
+					cal.thisYear	= new Date().getFullYear();
+					cal.thisMonth	= new Date().getMonth()+ 1;
+					cal.thisDay		= new Date().getDate();
+			}
+			y = cal.thisYear;
+			m = cal.thisMonth;
+			d = cal.thisDay;
+			$("#yearHead").html(y +" 年");
+			$("#monthHead").html(parseInt(m, 10) +" 月");
+			cal.daysMonth[1] = (0==y%4 && (y%100!=0 || y%400==0)) ? 29 : 28; //闰年二月为29天
+			var w = new Date(y, m-1, 1).getDay();
+			var prevDays = m==1	? cal.daysMonth[11] : cal.daysMonth[m-2];
+			for(var i=(w-1); i>=0; i-=1){ //这三个 for 循环为日历赋数据源（数组 cal.day）格式是 d/m/yyyy
+					cal.day[i] = prevDays +"/"+ (parseInt(m, 10)-1) +"/"+ y;
+					if(m==1) cal.day[i] = prevDays +"/"+ 12 +"/"+ (parseInt(y, 10)-1);
+					prevDays-=1;
+			}
+			for(var i=1; i<=cal.daysMonth[m-1]; i+=1) cal.day[i+w-1] = i +"/"+ m +"/"+ y;
+			for(var i=1; i<39-w-cal.daysMonth[m-1]+1; i+=1){
+					cal.day[cal.daysMonth[m-1]+w-1+i] = i +"/"+ (parseInt(m, 10)+1) +"/"+ y;
+					if(m==12) cal.day[cal.daysMonth[m-1]+w-1+i] = i +"/"+ 1 +"/"+ (parseInt(y, 10)+1);
+			}
+			for(var i=0; i<39; i+=1){		//这个循环是根据源数组写到日历里显示
+					var a = cal.day[i].split("/");
+					cal.dayObj[i].html(a[0]);
+					cal.dayObj[i].attr("title", a[2] +"-"+ appendZero(a[1]) +"-"+ appendZero(a[0]));
+					cal.dayObj[i].css("background-color", cal.dayBgColor);
+					cal.dayObj[i].css("color", cal.wordColor);
+					if ((i<10 && parseInt(cal.day[i], 10)>20) || (i>27 && parseInt(cal.day[i], 10)<12))
+							cal.dayObj[i].css("color", cal.wordDark);
+					if (cal.inputDate==cal.day[i]){		//设置输入框里的日期在日历上的颜色
+						cal.dayObj[i].css("background-color" , cal.darkColor);
+						cal.dayObj[i].css("color", cal.lightColor);
+					}
+					if (cal.day[i] == cal.today){			//设置今天在日历上反应出来的颜色
+						cal.dayObj[i].css("background-color" , cal.todayColor);
+						cal.dayObj[i].css("color", cal.lightColor);
+					}
+			}
+	}
+
+	function calendar(obj){
+		var event = $.event.fix(obj);
+		var e = event.target;
+
+		cal.eventSrc = e;
+		cal.objExport = e;
+
+		var offset = $(e).offset();
+		var o = $(parent.document.getElementById("calendarLayer"));
+		o.css("top", $(e).outerHeight()+offset.top);
+		o.css("left", offset.left);
+
+		if	(!cal.timeShow) cal.dateReg = /^(\d{1,4})(-|\/|.)(\d{1,2})\2(\d{1,2})$/;
+		else cal.dateReg = /^(\d{1,4})(-|\/|.)(\d{1,2})\2(\d{1,2}) (\d{1,2}):(\d{1,2}):(\d{1,2})$/;
+
+		try{
+			if (cal.objExport.value.trim() != ""){
+				cal.dateStyle = cal.objExport.value.trim().match(cal.dateReg);
+				if (cal.dateStyle == null){
+					cal.thisYear	= new Date().getFullYear();
+					cal.thisMonth	= new Date().getMonth()+ 1;
+					cal.thisDay		= new Date().getDate();
+					alert("原文本框里的日期有错误！\n可能与你定义的显示时分秒有冲突！");
+					writeCalendar();
+					return false;
+				}else{
+					cal.thisYear	= parseInt(cal.dateStyle[1], 10);
+					cal.thisMonth	= parseInt(cal.dateStyle[3], 10);
+					cal.thisDay		= parseInt(cal.dateStyle[4], 10);
+					cal.inputDate	= parseInt(cal.thisDay, 10) +"/"+ parseInt(cal.thisMonth, 10) +"/"+ 
+					parseInt(cal.thisYear, 10); writeCalendar();
+				}
+			}	else writeCalendar();
+		}	catch(e){writeCalendar();}
+		$(parent.document.getElementById("calendarLayer")).show();
+	}
+	
+	
+	
+	function dragStart(){
+		return;
+		cx=window.event.clientX; cy=window.event.clientY; drag=true;
+	}
+	
+	//年份的下拉框
+	function funYearSelect(){
+		var n = cal.yearFall;
+		var e = $("#tmpYearSelect");
+		var y = isNaN(parseInt(cal.thisYear, 10)) ? new Date().getFullYear() : parseInt(cal.thisYear);
+				y = (y <= 1000)? 1000 : ((y >= 9999)? 9999 : y);
+		var min = (y - n >= 1000) ? y - n : 1000;
+		var max = (y + n <= 9999) ? y + n : 9999;
+				min = (max == 9999) ? max-n*2 : min;
+				max = (min == 1000) ? min+n*2 : max;
+		e.empty();
+		for (var i=min; i<=max; i+=1) e.append("<option value="+i+">"+i+"年</option>");
+		e.show();
+		e.val(y);
+		e.focus();
+	}
+	
+	//月份的下拉框
+	function funMonthSelect(){
+		var m = isNaN(parseInt(cal.thisMonth, 10)) ? new Date().getMonth() + 1 : parseInt(cal.thisMonth);
+		var e = $("#tmpMonthSelect")
+		e.empty();
+		for (var i=1; i<13; i+=1) e.append("<option value="+i+">"+i+"月</option>");
+		e.show();
+		e.val(m);
+		e.focus();
+	}
+	
+	//往前翻月份
+	function prevM(){
+		cal.thisDay = 1;
+		if (cal.thisMonth==1) {
+			cal.thisYear-=1;
+			cal.thisMonth=13;
+		}
+		cal.thisMonth-=1;
+		writeCalendar();
+	}
+	
+	//往后翻月份
+	function nextM(){
+		cal.thisDay = 1;
+		if (cal.thisMonth==12) {
+			cal.thisYear+=1;
+			cal.thisMonth=0;
+		}
+		cal.thisMonth+=1;
+		writeCalendar();
+	}
+	
+	//往前翻 Year
+	function prevY(){
+		cal.thisDay = 1;
+		cal.thisYear-=1;
+		writeCalendar();
+	}
+	
+	//往后翻 Year
+	function nextY(){
+		cal.thisDay = 1;
+		cal.thisYear+=1;
+		writeCalendar();
+	}
+	
+	//隐藏日历控件
+	function hiddenCalendar(){
+		$(parent.document.getElementById("calendarLayer")).hide();
+	};
+	
+	function returnDate(obj) //根据日期格式等返回用户选定的日期
+	{
+		if(cal.objExport)
+		{
+			var returnValue;
+			var a = (obj.id=="today") ? [new Date().getDate(),(new Date().getMonth() +1),new Date().getFullYear()] : cal.day[obj.id.substr(7)].split("/");
+			var d = cal.format.match(/^(\w{4})(-|\/|.|)(\w{1,2})\2(\w{1,2})$/);
+			if(d==null){alert("你设定的日期输出格式不对！\r\n\r\n请重新定义！"); return false;}
+			var flag = d[3].length==2 || d[4].length==2; //判断返回的日期格式是否要补零
+			returnValue = flag ? a[2] +d[2]+ appendZero(a[1]) +d[2]+ appendZero(a[0]) : a[2] +d[2]+ a[1] +d[2]+ a[0];
+			cal.objExport.value = returnValue;
+			hiddenCalendar();
+		}
+	}
+</script>
+</head>
+<body>
+<select id="tmpYearSelect" style="left:1px;width:69px"></select>
+<select id="tmpMonthSelect" style="left:70px;width:69px"></select>
+
+<div>
+<table id="tableHead"><tr>
+	<!-- td id="prevMonth1" title='向前翻 1 月&#13;快捷键：←'><b>&lt;</b></td> -->
+	<td id="yearHead"		title="点击此处选择年份" style="width:50%;height:19px"></td>
+	<td id="monthHead"	title="点击此处选择月份"></td>
+	<!-- td id="nextMonth1" title='向后翻 1 月&#13;快捷键：→'><b>&gt;</b></td> -->
+</tr></table>
+<table id="banner">
+<tr>
+	<td style="width:22px;height:19px" id="prevYear" title="向前翻 1 年&#13;快捷键：↑">&lt;&lt;</td>
+	<td style="width:22px" id="prevMonth" title="向前翻 1 月&#13;快捷键：←">&lt;</td>
+	<td align=center id="today" title="当前日期&#13;快捷键：T">今日</td>
+	<td style="width:22px" id="nextMonth" title="向后翻 1 月&#13;快捷键：→">&gt;</td>
+	<td style="width:22px" id="nextYear" title="向后翻 1 年&#13;快捷键：↓">&gt;&gt;</td>
+</tr>
+</table>
+<table id="tableWeek" onmousedown="dragStart()" onmouseup="drag=false" onmouseout="drag=false"><tr>
+	<td style="height:18px">日</td><td>一</td><td>二</td><td>三</td><td>四</td><td>五</td><td>六</td>
+</tr></table>
+<table id="tableDay">
+ <tr id="lastDayLine">
+	<td colspan="3" id="btnClose" title="日期选择器 ver 1.0&#13;作者：HuangXY">关闭</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

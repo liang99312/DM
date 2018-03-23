@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta	http-equiv="Content-Type"	content="text/html; charset=utf-8" />
+        <link	rel="stylesheet"		href="/qiYe/css/style.css"		type="text/css" />
+        <link	rel="stylesheet"		href="/qiYe/qiYe/qiYe.css"		type="text/css" />
+        <script	type="text/javascript"		src="/js/jquery2.js"></script>
+        <script	type="text/javascript"		src="/js/json2.js"></script>
+        <script type="text/javascript"		src="/js/popMenu.js"></script>
+        <script type="text/javascript"		src="/js/luopan.js"></script>
+        <script type="text/javascript"		src="/js/luopan.form.js"></script>
+        <script type="text/javascript"		src="/js/luopan.data.js"></script>
+        <script type="text/javascript"		src="/js/luopan.list.js"></script>
+        <script type="text/javascript"		src="/qiYe/qiYe/qiYe.js"></script>
+    </head>
+    <body>
+        <table id="title">
+            <tr>
+                <td id="logo"></td>
+                <td id="zc"><input id="tblFrmQy_bc" type="button" value="注册" onclick="zjQiYe()" /></td>
+            </tr>
+        </table>
+
+        <div style="width: 100%;">
+            <table id="tblQiye" class="list" style="table-layout:fixed;width: 100%;">
+                <tr class="biaoTou">
+                    <td>
+                        企业名称
+                    </td>
+                    <td>
+                        手机号码
+                    </td>
+                </tr>
+            </table>
+        </div>
+        
+        <div id="dvCx4Qy" class="pop">
+            <table id="tblCx4Qy" class="form">
+                <tr>
+                    <td style="width: 120px;" class="title">
+                        企业名称：
+                    </td>
+                    <td>
+                        <input type="text" id="tblCx4Qy_mc" />
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 120px;" class="title">
+                        验&ensp;证&ensp;码：
+                    </td>
+                    <td>
+                        <input type="password" id="tblCx4Qy_yzm" />
+                    </td>
+                </tr>
+                <tr class="diBian">
+                    <td colspan="2">
+                        <input type="button" value="查询" onclick="javascript:cxQiYe()" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        
+        <div id="dvFrmQy" class="pop">
+            <table id="tblFrmQy" class="form">
+                <tr>
+                    <td id="tblFrmQy_mc_lb" class="title" style="width: 120px;">
+                        企业名称：
+                    </td>
+                    <td>
+                        <input type="text" id="tblFrmQy_mc" />
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 120px;" class="title">
+                        手机号码：
+                    </td>
+                    <td>
+                        <input type="text" id="tblFrmQy_sjhm" />
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 120px;" class="title">
+                        验&ensp;证&ensp;码：
+                    </td>
+                    <td>
+                        <input type="password" id="tblFrmQy_yzm" />
+                    </td>
+                </tr>
+                <tr class="diBian">
+                    <td colspan="4" style="text-align: center;">
+                        <input id="tblFrmQy_bc" type="button" value="保存" onclick="javascript:bcQiYe()" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="board"></div>
+    </body>
+</html>

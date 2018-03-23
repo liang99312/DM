@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<script type="text/javascript" src="/js/jquery2.js"></script>
+		<style type="text/css">
+			body,table,div,td {
+				margin: 0;
+				padding: 0;
+			}
+
+			div{
+				position:relative;
+				float:left;
+				width:100%;
+			}
+
+			table,td {
+				border-collapse: collapse;
+			}
+
+			td div {
+				float: left;
+				height: 20px;
+				margin-left: 10px;
+				margin-top: 60px;
+				font-size: 12px;
+			}
+
+			#btnExit{
+				width:63px;
+				height:20px;
+				margin-left:30px;
+				color:white;
+				border:0;
+				background:url('/qiYe/images/frm_H/frm_01_06_a.png') no-repeat 0 0;
+			}
+
+			#dvTap{
+				position:relative;
+				float:left;
+				top: 0px;
+				left: 0px;
+				height: 30px;
+				margin-left: 195px;
+				width: calc(100% - 210px);
+			}
+
+			#dvTap>div{
+				position: absolute;
+				margin: 0;
+				top: 0;
+				width: 150px;
+				height: 30px;
+				cursor:pointer;
+				background-size:150px 30px;
+			}
+
+			.frontBoard{
+				background:url(/qiYe/images/frm_H/tap1.png) no-repeat 0 0;
+			}
+
+			.backBoard{
+				background:url(/qiYe/images/frm_H/tap2.png) no-repeat 0 0;
+			}
+
+			.dvTapTitle{
+				position: absolute;
+				top:4px;
+				right:48px;
+				width:70px;
+				height:20px;
+				text-align:center; 
+			}
+
+			.dvTapClose{
+				position: absolute;
+				top:2px;
+				right:25px;
+				width:12px;
+				height:12px;
+				background:url(/qiYe/images/tap_close1.png) no-repeat 0 0;
+				color:#778899;
+			} 
+
+			.dvTapClose:hover{
+				background:url(/qiYe/images/tap_close2.png) no-repeat 0 0;
+			} 
+
+		</style>
+		<script type="text/javascript">
+                        $(document).ready(function () {
+                            var json = {};
+                            json = {"jsonObj": JSON.stringify(json)};
+                            var s = $.ajax({
+                                url: "/yg/getYh.do",
+                                data: json,
+                                dataType: "json",
+                                type: "post",
+                                cache: false,
+                                success: function (json) {
+                                    if(json.result === 0)
+                                        $("#dlrName").html(json.mc);
+                                }
+                            });
+                        });
+			function exit() {
+				if (!confirm("您确定要退出该系统吗??"))
+					return;
+				window.top.location.href = '/logout.do';
+                                window.SysExit();
+			}
+
+		</script>
+	</head>
+
+	<body marginwidth="0" marginheight="0">
+		<div style="height:81px">
+			<table style="width:100%; height:100%">
+				<tr>
+					<td style="width:475px;height:81px; background:url(/qiYe/images/frm_H/frm_01_01.jpg) no-repeat 0 0">&nbsp;</td>
+					<td style="background:url(/qiYe/images/frm_H/frm_01_02.jpg) repeat-x 0 0">&nbsp;</td>
+					<td style="width:19px;background:url(/qiYe/images/frm_H/frm_01_03.jpg) no-repeat 0 0">&nbsp;</td>
+					<td style="width: 300px; background: url(/qiYe/images/frm_H/frm_01_04.jpg) repeat-x 0 0">
+						<div>
+							欢迎你, 
+                                                        <a style="color:#004faa" id="dlrName">&ensp;&ensp;&ensp;</a>
+							<input type="button" id="btnExit" onclick="javascript:exit()" value="退出系统">
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div style="height:25px; background:url(/qiYe/images/frm_H/frm_02_01.jpg) repeat-x 0 0">
+			<div id="dvTap"></div>
+		</div>
+
+	</body>
+</html>

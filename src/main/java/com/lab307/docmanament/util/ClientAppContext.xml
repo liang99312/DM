@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xmlns:jee="http://www.springframework.org/schema/jee"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+						http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+						http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+						http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+	<bean id="DengFengSessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="configLocation" value="classpath:com/lab307/docmanament/util/hibernate4Client.cfg.xml" />
+	</bean>
+
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="DengFengSessionFactory"/>
+	</bean>  
+
+	<!-- 配置事务通知属性 -->
+	<tx:advice	id="txAdvice"	transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method	name="zj*"	propagation="REQUIRES_NEW"	read-only="false" rollback-for="RuntimeException" />
+			<tx:method	name="get*"	propagation="REQUIRES_NEW"	read-only="false" rollback-for="RuntimeException" />
+			<tx:method	name="*"	propagation="REQUIRED"		read-only="false" rollback-for="RuntimeException" />
+		</tx:attributes>
+	</tx:advice>
+
+	<aop:config	proxy-target-class="true">
+		<aop:pointcut	id="pointCut1"			expression="execution(* com.lab307.docmanament.util..*.*(..))" />
+		<aop:advisor	advice-ref="txAdvice"	pointcut-ref="pointCut1" />
+	</aop:config>
+	
+	<context:annotation-config></context:annotation-config>
+	<bean id="XinJianQiYe"				class="com.lab307.docmanament.util.XinJianQiYe" />
+	<bean id="DocManamentDB"				class="com.lab307.docmanament.DB.XiangYangDB" />
+</beans>

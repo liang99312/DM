@@ -1,0 +1,28 @@
+div#dvCx4Yg {
+    top: 36px;
+    z-index: 10;
+    width:400px;
+}
+
+input[type=password] {
+    border: 0;
+    width:200px;
+    border-bottom: 1px solid #065E9E;
+    background-color: transparent;
+}
+#tblCx4Yg_zt{
+    width:200px;
+}
+div #dvFrmYg{
+	position: relative;
+	float: left;
+	width: 800px;
+	background: #ffffff;
+}
+
+div #dvFrmYgZh{
+	position: relative;
+	float: left;
+	width: 800px;
+	background: #ffffff;
+}

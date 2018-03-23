@@ -1,0 +1,28 @@
+div#dvCx4Kh {
+    top: 36px;
+    z-index: 10;
+    width:400px;
+}
+
+div#dvFrmYuanGong {
+    z-index: 10;
+}
+
+table#tblFrmKh_gw tr:first-child td{
+    border-top-width: 0;
+}
+
+table#tblFrmKh_gw tr:last-child td{
+    border-bottom-width: 0;
+}
+
+table#tblFrmKh_gw td{
+    width: 20%;
+}
+
+input[type=password] {
+    border: 0;
+    width:200px;
+    border-bottom: 1px solid #065E9E;
+    background-color: transparent;
+}

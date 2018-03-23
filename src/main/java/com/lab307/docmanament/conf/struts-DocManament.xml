@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <package name="System" namespace="/" extends="struts-default">
+        <global-results>
+            <result name="reLogin">/reLogin.html</result>
+        </global-results>
+        <action name="dl"							class="YuanGongAction"						method="dengLu"></action>
+        <action name="logout"                                                   class="CommonUtil"						method="logout"></action>
+    </package>
+    
+    <package name="QiYe" namespace="/qy" extends="struts-default">
+        <action name="qiYe"                                                     class="QiYeAction"						method="qiYe">
+            <result name="success">/qiYe/qiYe/qiYe.html</result>
+        </action>
+        <action name="qyZc"                                                     class="QiYeAction"						method="zjQiYe"></action>
+        <action name="cxQy"                                                     class="QiYeAction"						method="cxQiYe"></action>
+    </package>
+
+    <package name="YuanGong" namespace="/yg" extends="struts-default">
+        <global-results>
+            <result name="reLogin">/reLogin.html</result>
+        </global-results>
+
+        <action name="zm"							class="YuanGongAction"						method="zhuoMian">
+            <result name="success">/qiYe/zhuoMian/frame.html</result>
+        </action>
+        <action name="ht"							class="YuanGongAction"						method="hengTiao">
+            <result name="success">/qiYe/zhuoMian/biaoTi.html</result>
+        </action>
+        <action name="cd"							class="YuanGongAction"						method="caiDan">
+            <result name="success">/qiYe/zhuoMian/caiDan.html</result>
+        </action>
+        <action name="mm"                                                       class="YuanGongAction"						method="miMa">
+            <result name="success">/qiYe/xiTong/xiuGaiMiMa.html</result>
+        </action>
+        
+        <action name="yuanGong"                                                 class="YuanGongAction"						method="yuanGong">
+            <result name="success">/qiYe/yuanGong/yuanGong.html</result>
+        </action>
+        
+        <action name="getYh"							class="YuanGongAction"						method="getYongHu"></action>
+        <action name="xgMm"							class="YuanGongAction"						method="xgMiMa"></action>
+        <action name="getQx"							class="YuanGongAction"						method="getQuanXian"></action>
+        <action name="cxYg"							class="YuanGongAction"						method="cxYuanGong"></action>
+        <action name="quYgzl"                                                   class="YuanGongAction"						method="quYuanGongZiLiao"></action>
+        <action name="cxYgzd"                                                   class="YuanGongAction"						method="cxYuanGongZiDian"></action>
+        <action name="zjYg"							class="YuanGongAction"						method="zjYuanGong"></action>
+        <action name="xgYg"							class="YuanGongAction"						method="xgYuanGong"></action>
+        <action name="scYg"							class="YuanGongAction"						method="scYuanGong"></action>
+        <action name="hfYg"							class="YuanGongAction"						method="hfYuanGong"></action>
+        <action name="czZh"							class="YuanGongAction"						method="czZhangHao"></action>
+        <action name="zdJs"							class="YuanGongAction"						method="zdJueSe"></action>
+        <action name="cxJszd"                                                   class="JueSeAction"						method="cxJueSe"></action>
+    </package>
+</struts>

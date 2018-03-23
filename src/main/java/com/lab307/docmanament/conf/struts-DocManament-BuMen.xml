@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="BuMen"			namespace="/bm"				extends="struts-default">
+		<global-results>
+			<result name="reLogin">/reLogin.html</result>
+		</global-results>
+
+		<action name="buMen"						class="BuMenAction"						method="buMen">
+			<result name="success">/qiYe/buMen/buMen.html</result>
+		</action>
+		<action name="cxBm"						class="BuMenAction"						method="cxBuMen"></action>
+                <action name="quBmZl"						class="BuMenAction"						method="quBuMenZiLiao"></action>
+		<action name="zjBm"						class="BuMenAction"						method="zjBuMen"></action>
+		<action name="xgBm"						class="BuMenAction"						method="xgBuMen"></action>
+		<action name="scBm"						class="BuMenAction"						method="scBuMen"></action>
+		<action name="xgBmyg"						class="BuMenAction"						method="xgBuMenYuanGong"></action>
+		<action name="cxBmzd"						class="BuMenAction"						method="cxBuMenZiDian"></action>
+	</package>
+</struts>

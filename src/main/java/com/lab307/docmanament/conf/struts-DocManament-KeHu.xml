@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="KeHu"			namespace="/kh"				extends="struts-default">
+		<global-results>
+			<result name="reLogin">/reLogin.html</result>
+		</global-results>
+
+		<action name="keHu"							class="KeHuAction"						method="keHu">
+			<result name="success">/qiYe/keHu/keHu.html</result>
+		</action>
+		<action name="cxKh"							class="KeHuAction"						method="cxKeHu"></action>
+                <action name="quKhZl"							class="KeHuAction"						method="quKeHuZiLiao"></action>
+		<action name="cxKhzd"                                                   class="KeHuAction"						method="cxKeHuZiDian"></action>
+		<action name="zjKh"							class="KeHuAction"						method="zjKeHu"></action>
+		<action name="xgKh"							class="KeHuAction"						method="xgKeHu"></action>
+		<action name="scKh"							class="KeHuAction"						method="scKeHu"></action>
+		
+	</package>
+</struts>

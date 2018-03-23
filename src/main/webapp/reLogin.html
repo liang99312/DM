@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+	<head>
+		<title>登录</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+			body{
+				margin: 0;
+				padding: 0;
+				background:linear-gradient(to bottom, #def2fb, #b6e0f8) no-repeat fixed center;
+			}
+			#container{
+				width: 400px;
+				height: 250px;
+				background: #fff;
+				position: absolute;
+				left:50%;
+				top:50%;
+				margin-left: -200px;
+				margin-top: -125px;
+				border-radius: 5px;
+				/*box-shadow: 2px 4px 8px #c0c0c0;*/
+			}
+			.top{
+				position: relative;
+				height: 80px;
+				font-size: 36px;
+				color: #ffffff;
+				font-weight: bold;
+				background:  #264063;
+			}
+			#login_logo{
+				position: relative;				
+				width: 80px;
+				height: 50px;
+				top: 16px;
+				left: 70px;
+				float: left;
+				background: url("/qiYe/images/login_logo.png") no-repeat 5px 5px;
+			}
+			.fm{
+				height: 170px;
+				background:url("/qiYe/images/login_suo.png") no-repeat 10px 55px;
+			}
+			table{
+				width: 100%;
+				line-height: 48px;
+				color: #000;
+				font-weight: bold;
+				font-family: Arial, Helvetica, sans-serif;
+			}
+			table td{
+				font-size: 20px;
+				font-weight: bold;
+				text-align: right;
+				vertical-align: central;
+			}
+			.myinput {
+				width: 196px;
+				height: 25px;
+			}
+			.denglu{
+				width: 200px;
+				height: 35px;
+				color: #fff;
+				border: 0;
+				font-family: "黑体";
+				font-size: 20px;
+				background: #9ab6dc;
+				border-radius: 5px;	
+			}
+			#bar{
+				position: absolute;
+				left: calc(50% - 150px);
+				top: calc(50% + 130px);
+			}
+
+			#bar td{
+				height: 10px;
+			}
+		</style>
+		<script language="javascript" src="/js/jquery2.js"></script>
+		<script type="text/javascript" src="/js/luopan.js"></script>
+		<script type="text/javascript" src="/js/luopan.form.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function () {
+				$("#xm, #dlmm").val("");
+				$("#xm").focus();
+				$(document).fmBuilt();
+			});
+			function chkLogin() {
+				if ($("#xm").val().length === 0) {
+					alert("用户名为空，请输入用户名!");
+					$('#xm').focus();
+					return false;
+				}
+				if ($('#dlmm').val().length === 0) {
+					alert("密码为空，请输入密码!");
+					$('#dlmm').focus();
+					return false;
+				}
+				return true;
+			}
+
+			function login() {
+				if (chkLogin()) {
+					showProccess();
+					var j = {};
+					j.dlm = $("#xm").val();
+					j.mm = $("#dlmm").val();
+					$.dfAjax({
+						url: "/dl.do",
+						data: j,
+						fun: function (data) {
+							window.top.location.replace(data.url + "?dt=" + new Date());
+						}
+					});
+					hindProccess();
+				}
+			}
+
+			function showProccess() {
+				$('#bar').show();
+				barTimer = setInterval("mypro()", 200);
+				$('#login').disabled = 'disabled';
+			}
+
+			function hindProccess() {
+				clearTimeout(barTimer);
+				$('#bar').hide();
+				$('#login').disabled = '';
+			}
+
+			var num = 0;
+			var barTime;
+			function mypro() {
+				num += 1;
+				if (num > 20) {
+					$("#jd").html('<font color="#0000FF">■</font>');
+					num = 0;
+				} else {
+					$("#jd").html($("#jd").html() + '<font color="#0000FF">■</font>');
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="container">
+			<div class="top">
+				<div id="login_logo"></div>
+				<div style="position: relative; top: 20px; margin-left: 200px;">登峰档案</div>
+			</div>
+			<div class="fm">
+				<table>
+					<tr>
+						<td style="width:44%">用户名：</td>
+						<td style="text-align: left;"><input id="xm" class="myinput" type="text"></td>
+					</tr>
+					<tr>
+						<td>密&nbsp;&nbsp;&nbsp;&nbsp;码：</td>
+						<td style="text-align: left;"><input id="dlmm" class="myinput" type="password"></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td style="text-align: left;"><input  class="denglu" type="button" onclick="javascript:login()" value="登&nbsp;&nbsp;&nbsp;录"></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div id="bar" style="width:300px; height:20px; z-index:10;display: none">
+			<table width="100%" bgcolor="FFFFFF">
+				<tr>
+					<td style="text-align:left;">登录中，请稍后…</td>
+				</tr>
+				<tr>
+					<td id="jd"></td>
+				</tr>
+			</table>
+		</div>
+
+	</body>
+</html>

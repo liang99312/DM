@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="WenJianFenLei" namespace="/wjfl" extends="struts-default">
+		<global-results>
+			<result name="reLogin">/reLogin.html</result>
+		</global-results>
+
+		<action name="wenJianFenLei" class="WenJianFenLeiAction" method="wenJianFenLei">
+			<result name="success">/qiYe/wenJianFenLei/wenJianFenLei.html</result>
+		</action>
+		<action name="cxWjfl" class="WenJianFenLeiAction" method="cxWenJianFenLei"></action>
+                <action name="quWjflZl" class="WenJianFenLeiAction" method="quWenJianFenLeiZiLiao"></action>
+		<action name="zjWjfl" class="WenJianFenLeiAction" method="zjWenJianFenLei"></action>
+		<action name="xgWjfl" class="WenJianFenLeiAction" method="xgWenJianFenLei"></action>
+		<action name="scWjfl" class="WenJianFenLeiAction" method="scWenJianFenLei"></action>
+		<action name="xgWjflQx" class="WenJianFenLeiAction" method="xgWenJianFenLeiQuanXian"></action>
+                <action name="cxWjflzd" class="WenJianFenLeiAction" method="cxWenJianFenLeiZiDian"></action>
+                <action name="cxSqWjfl" class="WenJianFenLeiAction" method="cxShouQuanWenJianFen"></action>
+	</package>
+</struts>

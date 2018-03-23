@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta	http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link	rel="stylesheet" href="/qiYe/css/style.css" type="text/css" />
+        <link	rel="stylesheet" href="/qiYe/wenJianFenLei/wenJianFenLei.css"	type="text/css" />
+
+        <script	type="text/javascript" src="/js/jquery2.js"></script>
+        <script	type="text/javascript" src="/js/json2.js"></script>
+        <script	type="text/javascript" src="/js/popMenu.js"></script>
+        <script	type="text/javascript" src="/js/luopan.js"></script>
+        <script	type="text/javascript" src="/js/luopan.form.js"></script>
+        <script	type="text/javascript" src="/js/luopan.data.js"></script>
+        <script	type="text/javascript" src="/js/luopan.list.js"></script>
+        <script	type="text/javascript" src="/qiYe/wenJianFenLei/wenJianFenLei.js"></script>
+    </head>
+    <body>
+        <table id="title">
+            <tr>
+                <td id="logo" data-name="200110"></td>
+                <td id="pageTitle"></td>
+            </tr>
+        </table>
+
+        <div style="width: 100%;">
+            <table id="tblwjfl" class="list" style="table-layout:fixed;width: 100%;">
+                <tr class="biaoTou">
+                    <td>
+                        分类名称
+                    </td>
+                    <td>
+                        分类代码
+                    </td>
+                    <td>
+                        级别
+                    </td>
+                    <td>
+                        备注
+                    </td>
+                      <td>
+                        状态
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="dvCx4wjfl" class="pop">
+            <table id="tblCx4wjfl" class="form">
+                <tr>
+                    <td style="width: 120px;" class="title">
+                        分类名称：
+                    </td>
+                    <td>
+                        <input type="text" id="tblCx4wjfl_mc" />
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 120px;" class="title">
+                        分类状态：
+                    </td>
+                    <td>
+                         <select id="tblCx4wjfl_zt" style="width: 200px;">
+                            <option value="1" selected>有效</option>
+                            <option value="-1">无效</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr class="diBian">
+                    <td colspan="2">
+                        <input type="button" value="查询" onclick="javascript:cxWenJianFenLei()" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="cd4wjfl" class="popMenu">
+            <ul>
+                <li id="zjwjfl" data-name="200200">
+                    增加分类
+                </li>
+                <li id="xgwjfl" data-name="200210">
+                    修改分类
+                </li>
+                <li id="scwjfl" data-name="200220">
+                    删除分类
+                </li>
+                <li id="sqwjfl" data-name="200230">
+                    分类授权
+                </li>
+            </ul>
+        </div>
+
+        <div id="cd4fpQx" class="popMenu">
+            <ul>
+                <li id="zjQx">
+                    增加权限
+                </li>
+                <li id="xgQx">
+                    修改权限
+                </li>
+                <li id="scQx">
+                    删除权限
+                </li>
+            </ul>
+        </div>
+
+        <div id="dvFrmwjfl" class="pop" style="width: 800px;">
+            <table id="tblFrmwjfl" class="form">
+                <tr>
+                    <td id="tblFrmwjfl_mc_lb" class="title" style="width: 120px;">
+                        分类名称：
+                    </td>
+                    <td>
+                        <input type="text" id="tblFrmwjfl_mc" />
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 120px;" class="title">
+                        分类代码：
+                    </td>
+                    <td>
+                        <input type="text" id="tblFrmwjfl_dm" />
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 120px;" class="title">
+                        级&ensp;&ensp;&ensp;&ensp;别：
+                    </td>
+                    <td>
+                        <select id="tblFrmwjfl_jb" style="width: 200px;">
+                            <option value="部门">部门</option>
+                            <option value="公司">公司</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 120px;" class="title">
+                        备&ensp;&ensp;&ensp;&ensp;注：
+                    </td>
+                    <td>
+                        <input type="text" id="tblFrmwjfl_bz" style="width: 600px;"/>
+                    </td>
+                </tr>
+                <tr class="diBian">
+                    <td colspan="2" >
+                        <input id="tblFrmwjfl_bc" type="button" value="保存"
+                               onclick="javascript:bcWenJianFenLei()" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        
+        <div id="dvFrmQx" class="pop" style="width: 800px;">
+            <table id="tblFrmQx" class="form">
+                <tr>
+                    <td id="sqFrmwjfl_mc_lb" class="title" style="width: 120px;">
+                        分类名称：
+                    </td>
+                    <td>
+                        <input type="text" id="sqFrmwjfl_mc" readonly="readonly"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 120px;" class="title">
+                        分类代码：
+                    </td>
+                    <td>
+                        <input type="text" id="sqFrmwjfl_dm" readonly="readonly"/>
+                    </td>
+                </tr>      
+                <tr>
+                    <td style="width: 120px;" class="title">
+                        级&ensp;&ensp;&ensp;&ensp;别：
+                    </td>
+                    <td>
+                        <input type="text" id="sqFrmwjfl_jb" readonly="readonly"/>
+                    </td>
+                </tr>   
+                 <tr>
+                    <td style="width: 120px;vertical-align: text-top;" class="title">
+                        权&ensp;&ensp;&ensp;&ensp;限：
+                    </td>
+                    <td>
+                        <table id="tblqxfp" class="list">
+                            <tr  class="biaoTou" style="color: black">
+                                <td style="width: 120px;" >
+                                    部门
+                                </td>
+                                <td style="width: 120px;">
+                                    角色
+                                </td>
+                                <td style="width: 120px;">
+                                    操作
+                                </td>                                                        
+                            </tr>
+                            <tbody id="qxczWj">                                 
+                            
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="text-align: center;">
+                        <input type="button" value="保存"
+                               onclick="javascript:bcWjflQx()" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+           
+        <div id="dvWenJianFenLei" class="pop"  style="width: 800px;">
+            <table id="tblWenJianFenLei" class="form">
+                
+                <tr id="tblWenJianFenLei_trbm">
+                    <td class="title" style="width: 120px;">
+                        部&ensp;&ensp;&ensp;&ensp;门:
+                    </td>
+                    <td>
+                        <input type="text" id="tblWenJianFenLei_bm"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="title" style="width: 120px;" >
+                        角&ensp;&ensp;&ensp;&ensp;色:
+                    </td>
+                    <td>
+                        <input type="text" id="tblWenJianFenLei_js"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="title" style="width: 120px;">
+                        操&ensp;&ensp;&ensp;&ensp;作:
+                    </td>
+                    <td>
+                        <label><input type="checkbox" name="Qx" value="cz" id="qxzj"/>查找</label>
+                        <label><input type="checkbox" name="Qx" value="xz" id="qxzj"/>下载</label>
+                        <label><input type="checkbox" name="Qx" value="zj" id="qxzj"/>增加</label>
+                        <label><input type="checkbox" name="Qx" value="xg" id="qxxg"/>修改</label>
+                        <label><input type="checkbox" name="Qx" value="zl" id="qxsc"/>整理</label>
+                        <label><input type="checkbox" name="Qx" value="sh" id="qxsh"/>审核</label>
+                        <label><input type="checkbox" name="Qx" value="ql" id="qxsh"/>清理</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="title" style="width: 120px;" >
+                        备&ensp;&ensp;&ensp;&ensp;注:
+                    </td>
+                    <td>
+                        <input type="text" id="tblWenJianFenLei_bz" style="width: 577px;"/>
+                    </td>
+                </tr>  
+                <tr>
+                    <td colspan="2" style="text-align: center;">
+                        <input type="button" value="保存"
+                               onclick="javascript:bcWjflQxMx()" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        
+        <div id="board"></div>
+        
+    </body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta	http-equiv="Content-Type"	content="text/html; charset=utf-8" />
+        <link	rel="stylesheet"		href="/qiYe/css/style.css"		type="text/css" />
+        <link	rel="stylesheet"		href="/qiYe/yuanGong/yuanGong.css"	type="text/css" />
+        <script	type="text/javascript"		src="/js/jquery2.js"></script>
+        <script	type="text/javascript"		src="/js/json2.js"></script>
+        <script	type="text/javascript"		src="/js/popMenu.js"></script>
+        <script	type="text/javascript"		src="/js/luopan.js"></script>
+        <script	type="text/javascript"		src="/js/luopan.form.js"></script>
+        <script	type="text/javascript"		src="/js/luopan.data.js"></script>
+        <script	type="text/javascript"		src="/js/luopan.list.js"></script>
+        <script type="text/javascript"          src="/js/calendar.js"></script>
+        <script type="text/javascript"		src="/qiYe/yuanGong/yuanGong.js"></script>
+    </head>
+    <body>
+        <table id="title">
+            <tr>
+                <td id="logo"></td>
+                <td id="pageTitle"></td>
+            </tr>
+        </table>
+
+        <div style="width: 100%;">
+            <table id="tblYuanGong" class="list" style="table-layout:fixed;width: 100%;">
+                <tr class="biaoTou">
+                    <td>
+                        姓名
+                    </td>
+                    <td>
+                        性别
+                    </td>
+                    <td>
+                        身份证号码
+                    </td>
+                    <td>
+                        手机号码
+                    </td>
+                    <td>
+                        入职时间
+                    </td>                    
+                    <td>
+                        状态
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+
+        <div id="dvCx4Yg" class="pop">          <!-- 查询按键后事件 -->
+            <table id="tblCx4Yg" class="form">
+                <tr>
+                    <td style="width: 120px;" class="title">
+                        员工姓名：
+                    </td>
+                    <td>
+                        <input type="text" id="tblCx4Yg_xm" />
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 120px;" class="title">
+                        员工性别：
+                    </td>
+                    <td id="tblCx4Yg_xb">
+                        <input type="radio" name="xingbie" id="tblCx4Yg_nan" value="男" checked="checked">男
+                        <input type="radio" name="xingbie" id="tblCx4Yg_nv" value="女">女
+                        <input type="radio" name="xingbie" id="tblCx4Yg_syyg" value="">所有
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 120px;" class="title">
+                        身份证号：
+                    </td>
+                    <td>
+                        <input type="text" id="tblCx4Yg_sfzh" />
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 120px;" class="title">
+                        手机号码：
+                    </td>
+                    <td>
+                        <input type="text" id="tblCx4Yg_sjhm" />
+                    </td>
+                </tr>                
+                <tr>
+                    <td style="width: 120px;" class="title">
+                        员工状态：
+                    </td>
+                    <td>
+                        <select id="tblCx4Yg_zt">
+                            <option value="1">在职</option>
+                            <option value="-1">离职</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr class="diBian">
+                    <td colspan="2">
+                        <input type="button" value="查询" onclick="javascript:cxYuanGong()" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!-- 鼠标右键后的弹窗 -->
+        <div id="cd4Yg" class="popMenu">
+            <ul>
+                <li id="zjYg" data-name="100100">
+                    增加员工
+                </li>
+                <li id="xgYg"  data-name="100130">
+                    修改员工
+                </li>
+                <li id="zdJs" data-name="100110">
+                    指定角色
+                </li>
+                <li id="scYg"  data-name="100120">
+                    员工离职
+                </li>
+                <li id="czmm" data-name="100200">
+                    重置账号
+                </li>
+                <!--                <li id="qrlz" data-name="100210">
+                                    确认离职
+                                </li>	-->
+            </ul>
+        </div>
+
+        <div id="dvFrmYg" class="pop">
+            <table id="tblFrmYg" class="form">
+                <tr>
+                    <td id="tblFrmYg_xm_lb" class="title" style="width:150px;">姓&ensp;&ensp;&ensp;&ensp;名：</td>
+                    <td><input type="text" id="tblFrmYg_xm"></td>
+                </tr>
+                <tr>
+                    <td id="tblFrmYg_xb_lb" class="title">性&ensp;&ensp;&ensp;&ensp;别：</td>
+                    <td id="tblFrmYg_xb">
+                        <input type="radio" name="xingbie" id="nan" value="男" checked="checked">男
+                        <input type="radio" name="xingbie" id="nv" value="女">女
+                    </td>
+                </tr>
+                <tr class="czYinCang">
+                    <td id="tblFrmYg_sfzh_lb" class="title">身份证号：</td>
+                    <td><input type="text" id="tblFrmYg_sfzh"></td>
+                </tr>
+                <tr class="czYinCang">
+                    <td id="tblFrmYg_sjhm_lb" class="title">手机号码：</td>
+                    <td><input type="text" id="tblFrmYg_sjhm"></td>
+                </tr>
+                <tr class="dlyongHu">
+                    <td id="tblFrmYg_dlm_lb" class="title">登&ensp;录&ensp;名：</td>
+                    <td><input type="text" id="tblFrmYg_dlm"></td>
+                </tr>
+                <tr>
+                    <td id="tblFrmYg_miMa_lb" class="title">密&ensp;&ensp;&ensp;&ensp;码：</td>
+                    <td><input type="password" id="tblFrmYg_miMa" value="123456"></td>
+                </tr>
+                <tr class="czYinCang">
+                    <td id="tblFrmYg_rzrq_lb" class="title">入职日期：</td>
+                    <td><input type="text" id="tblFrmYg_rzsj"></td>
+                </tr>
+                <tr class="ckXianShi" style="display: table-row;">
+                    <td id="tblFrmYg_js_lb" class="title" style="vertical-align: text-top;">职&ensp;&ensp;&ensp;&ensp;位：</td>
+                    <td>
+                        <table id="tblFrmYg_js">
+                            <tr><td></td><td></td><td></td></tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr class="">
+                    <td colspan="2" style="text-align:center;">
+                        <label><input type="checkbox" id="tblFrmYg_lxsr" value="lxlr">保存后继续增加</label>
+                        <input id="tblFrmYg_bc" type="button" value="保存" onclick="javascript:bcYuanGong()">
+                        <input id="tblFrmYg_hf" type="button" value="恢复" onclick="javascript:hfYuanGong()">
+                        <input id="tblFrmYg_cz" type="button" value="重置" onclick="javascript:bcChongZhi()">
+                    </td>
+                </tr>                 
+            </table>
+        </div>
+
+        <div id="dvFrmYgZh" class="pop">
+            <table id="tblFrmYgZh" class="form">
+                <tr>
+                    <td id="tblFrmYgZh_xm_lb" class="title" style="width:150px;">姓&ensp;&ensp;&ensp;&ensp;名：</td>
+                    <td><input type="text" id="tblFrmYgZh_xm" readonly="readonly"></td>
+                </tr>
+                <tr>
+                    <td id="tblFrmYgZh_sfzh_lb" class="title">身份证号：</td>
+                    <td><input type="text" id="tblFrmYgZh_sfzh" readonly="readonly"></td>
+                </tr>
+                <tr>
+                    <td id="tblFrmYgZh_dlm_lb" class="title">登&ensp;录&ensp;名：</td>
+                    <td><input type="text" id="tblFrmYgZh_dlm"></td>
+                </tr>
+                <tr>
+                    <td id="tblFrmYgZh_miMa_lb" class="title">密&ensp;&ensp;&ensp;&ensp;码：</td>
+                    <td><input type="password" id="tblFrmYgZh_dlmm"></td>
+                </tr>
+                <tr class="">
+                    <td colspan="2" style="text-align:center;">
+                        <input id="tblFrmYgZh_bc" type="button" value="保存" onclick="javascript:bcYuanGongZh()">
+                    </td>
+                </tr>                 
+            </table>
+        </div>
+
+
+        <div id="dvFmJs" class="pop">
+            <table id="tblFmJs" class="form">
+                <tr>
+                    <td id="tblFmJs_xm_lb" class="title">姓&ensp;&ensp;&ensp;&ensp;名：</td>
+                    <td><a id="tblFmJs_xm"></a></td>
+                </tr>
+                <tr>
+                    <td id="tblFmJs_sfzh_lb" class="title">身份证号：</td>
+                    <td><a id="tblFmJs_sfzh"></a></td>
+                </tr>
+                <tr>
+                    <td id="tblFmJs_js_lb" class="title" style="vertical-align: top; width: 100px;">角&ensp;&ensp;&ensp;&ensp;色：</td>
+                    <td style="padding: 0">
+                        <table id="tblJs" class="list">
+                            <tr><td></td><td></td><td></td></tr>                 
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="text-align: center;">
+                        <input id="tblFmJs_bcJs" type="button" value="保存" onclick="javascript:bcYgJueSe()">
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="board"></div>
+    </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta	http-equiv="Content-Type"	content="text/html; charset=utf-8" />
+        <link	rel="stylesheet"		href="/qiYe/css/style.css"		type="text/css" />
+        <script	type="text/javascript"		src="/js/jquery2.js"></script>
+        <script	type="text/javascript"		src="/js/json2.js"></script>
+        <script type="text/javascript"		src="/js/luopan.js"></script>
+        <script>
+            function bcMm() {
+                var ymm = $("#tblMm_ymm").val();
+                var xmm = $("#tblMm_xmm").val();
+                var qrmm = $("#tblMm_qrmm").val();
+                if (xmm.length < 6) {
+                    return alert("新密码长度至少6位！");
+                }
+                if (xmm !== qrmm) {
+                    return alert("新密码和确认密码不匹配！");
+                }
+                var json = {};
+                json.ymm = ymm;
+                json.xmm = xmm;
+                json = {"jsonObj": JSON.stringify(json)};
+                var s = $.ajax({
+                    url: "/yg/xgMm.do",
+                    data: json,
+                    dataType: "json",
+                    type: "post",
+                    cache: false,
+                    success: function (json) {
+                        if (json.result === 0)
+                            alert("新密码设置成功！");
+                        else
+                            alert(json.msg);
+                    }
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <table id="title">
+            <tr>
+                <td id="pageTitle"></td>
+            </tr>
+        </table>
+
+        <div style="width: 100%;background-color: #E9F5FD;padding-top: 20px;">
+            <table id="tblMm" class="form" style="width:400px;">
+                <tr>
+                    <td style="width: 120px;" class="title">
+                        原&ensp;密&ensp;码：
+                    </td>
+                    <td>
+                        <input type="password" id="tblMm_ymm" />
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 120px;" class="title">
+                        新&ensp;密&ensp;码：
+                    </td>
+                    <td>
+                        <input type="password" id="tblMm_xmm" />
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 120px;" class="title">
+                        确认密码：
+                    </td>
+                    <td>
+                        <input type="password" id="tblMm_qrmm" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center;">
+                        <input type="button" value="保存" onclick="javascript:bcMm()" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

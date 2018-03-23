@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.lab307.docmanament.model.WenJianModel" table="t_wj">
+		<id name="bh" column="bh" type="java.lang.String" length="32">
+			<generator class="assigned"></generator>
+		</id>
+
+		<property
+			name="qybh"
+			column="qybh"
+			type="java.lang.String"
+			length="32"
+		/>
+
+		<property
+			name="mc"
+			column="mc"
+			type="java.lang.String"
+			length="100"
+		/>
+
+		<property
+			name="bmbh"
+			column="bmbh"
+			type="java.lang.String"
+			length="32"
+		/>
+
+		<property
+			name="khbh"
+			column="khbh"
+			type="java.lang.String"
+			length="32"
+		/>
+
+		<property
+			name="wjflbh"
+			column="wjflbh"
+			type="java.lang.String"
+			length="32"
+		/>
+                
+                <property
+			name="wjlx"
+			column="wjlx"
+			type="java.lang.String"
+			length="10"
+		/>
+
+		<property
+			name="wjdx"
+			column="wjdx"
+			type="int"
+		/>
+                
+                <property
+			name="zz"
+			column="zz"
+			type="java.lang.String"
+			length="20"
+		/>
+
+		<property
+			name="scr"
+			column="scr"
+			type="java.lang.String"
+			length="32"
+		/>
+
+		<property
+			name="scsj"
+			column="scsj"
+			type="java.util.Calendar"
+		/>
+
+		<property
+			name="shr"
+			column="shr"
+			type="java.lang.String"
+			length="32"
+		/>
+                
+                <property
+			name="shbz"
+			column="shbz"
+			type="java.lang.String"
+		/>
+
+		<property
+			name="shsj"
+			column="shsj"
+			type="java.util.Calendar"
+		/>
+
+		<property
+			name="zlr"
+			column="zlr"
+			type="java.lang.String"
+			length="32"
+		/>
+
+		<property
+			name="zlbz"
+			column="zlbz"
+			type="java.lang.String"
+		/>
+
+		<property
+			name="zlsj"
+			column="zlsj"
+			type="java.util.Calendar"
+		/>
+                
+		<property
+			name="jym"
+			column="jym"
+			type="java.lang.String"
+			length="10"
+		/>
+
+		<property
+			name="gjz"
+			column="gjz"
+			type="java.lang.String"
+			length="50"
+		/>
+
+		<property
+			name="bz"
+			column="bz"
+			type="java.lang.String"
+		/>
+		
+		<property
+			name="zt"
+			column="zt"
+			type="int"
+		/>
+	</class>
+</hibernate-mapping>

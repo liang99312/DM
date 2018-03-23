@@ -1,0 +1,43 @@
+div#dvCx4Bm {
+    top: 36px;
+    z-index: 10;
+    width:400px;
+}
+
+div#dvTiShi{
+	z-index:20;
+}
+
+div#dvFrmBm {
+    z-index: 10;
+}
+
+input[type=password] {
+    border: 0;
+    width:200px;
+    border-bottom: 1px solid #065E9E;
+    background-color: transparent;
+}
+
+#tblBm_bmyg thead tr{
+	color: #000000;
+	font-weight: bold;
+}
+#tblBm_bmyg{
+    overflow: auto;
+}
+#tblCx4Bm_zt{
+    width:200px;
+}
+thead{
+    background-color: #e4f0ff;
+}
+table.list tt{
+    height:31px !important;
+}
+table.list td{
+    height:31px !important;
+}
+td{
+    vertical-align:top;
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta	http-equiv="Content-Type"	content="text/html; charset=utf-8" />
+        <link	rel="stylesheet"		href="/qiYe/css/style.css"		type="text/css" />
+        <link	rel="stylesheet"		href="/qiYe/keHu/keHu.css"		type="text/css" />
+        <script	type="text/javascript"		src="/js/jquery2.js"></script>
+        <script	type="text/javascript"		src="/js/json2.js"></script>
+        <script type="text/javascript"		src="/js/popMenu.js"></script>
+        <script type="text/javascript"		src="/js/luopan.js"></script>
+        <script type="text/javascript"		src="/js/luopan.form.js"></script>
+        <script type="text/javascript"		src="/js/luopan.data.js"></script>
+        <script type="text/javascript"		src="/js/luopan.list.js"></script>
+        <script type="text/javascript"		src="/qiYe/keHu/keHu.js"></script>
+    </head>
+    <body>
+        <table id="title">
+            <tr>
+                <td id="logo" data-name="300100"></td>
+                <td id="pageTitle"></td>
+            </tr>
+        </table>
+
+        <div style="width: 100%;">
+            <table id="tblKehu" class="list" style="table-layout:fixed;width: 100%;">
+                <tr class="biaoTou">
+                    <td>
+                        客户名称
+                    </td>
+                    <td>
+                        客户代码
+                    </td>
+                     <td>
+                        联系人
+                    </td>
+                    <td>
+                        联系方式
+                    </td>
+                    <td>
+                        客户状态
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="dvCx4Kh" class="pop">
+            <table id="tblCx4Kh" class="form">
+                <tr>
+                    <td style="width: 120px;" class="title">
+                        客户名称：
+                    </td>
+                    <td>
+                        <input type="text" id="tblCx4Kh_mc" />
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 120px;" class="title">
+                        客户状态：
+                    </td>
+                    <td>
+                        <select id="tblCx4Kh_zt" style="width: 200px;">
+                            <option value="1" selected>有效</option>
+                            <option value="-1">无效</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr class="diBian">
+                    <td colspan="2">
+                        <input type="button" value="查询" onclick="javascript:cxKeHu()" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="cd4Kh" class="popMenu">
+            <ul>
+                <li id="zjKh" data-name="300110">
+                    增加客户
+                </li>
+                <li id="xgKh" data-name="300120">
+                    修改客户
+                </li>
+                <li id="scKh" data-name="300130">
+                    删除客户
+                </li>
+            </ul>
+        </div>
+
+        <div id="dvFrmKh" class="pop">
+            <table id="tblFrmKh" class="form">
+                <tr>
+                    <td id="tblFrmKh_mc_lb" class="title" style="width: 150px;">
+                        姓&ensp;&ensp;&ensp;&ensp;名：
+                    </td>
+                    <td>
+                        <input type="text" id="tblFrmKh_mc" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="title" style="width: 150px;">
+                        客户代码：
+                    </td>
+                    <td>
+                        <input type="text" id="tblFrmKh_dm" />
+                    </td>
+
+                </tr>
+                <tr>
+                    <td id="tblFrmKh_lxr_lb" class="title" style="width: 150px;">
+                        联&ensp;系&ensp;人：
+                    </td>
+                    <td>
+                        <input type="text" id="tblFrmKh_lxr" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="title" style="width: 150px;">
+                        联系方式：
+                    </td>
+                    <td>
+                        <input type="text" id="tblFrmKh_lxfs" />
+                    </td>
+                </tr>
+                <tr class="diBian">
+                    <td colspan="4" style="text-align: center;">
+                        <input id="tblFrmKh_bc" type="button" value="保存" onclick="javascript:bcKeHu()" />
+                    </td>
+                </tr>
+            </table>
+        </div>        
+        <div id="board"></div>
+    </body>
+</html>

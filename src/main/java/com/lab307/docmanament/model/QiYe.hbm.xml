@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="com.lab307.docmanament.model.QiYeModel" table="t_qy">
+		<id name="bh" column="bh" type="java.lang.String" length="32">
+			<generator class="assigned"></generator>
+		</id>
+
+		<property
+			name="mc"
+			column="mc"
+			type="java.lang.String"
+			length="100"
+		/>
+                
+                <property
+			name="sjhm"
+			column="sjhm"
+			type="java.lang.String"
+			length="11"
+		/>
+	</class>
+</hibernate-mapping>

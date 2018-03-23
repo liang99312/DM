@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	<constant name="struts.objectFactory" value="spring"/>
+	<constant name="struts.ui.theme" value="simple"/>
+	<constant name="struts.action.extension" value="do"/>
+	<constant name="struts.locale" value="zh_CN"/>
+	<constant name="struts.i18n.encoding" value="UTF-8"/>
+	<constant name="struts.devMode" value="true"/>
+	<constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+	<constant name="struts.i18n.reload" value="true"/>
+	<constant name="struts.objectFactory.spring.autoWire" value="name"/>
+	<constant name="struts.serve.static.browserCache" value="false"/>
+	<constant name="struts.url.includeParams" value="none"/>
+	
+	<include file="struts-default.xml"/>
+	<include file="com/lab307/docmanament/conf/struts-DocManament.xml"/>
+	<include file="com/lab307/docmanament/conf/struts-DocManament-BuMen.xml"/>
+	<include file="com/lab307/docmanament/conf/struts-DocManament-KeHu.xml"/>
+	<include file="com/lab307/docmanament/conf/struts-DocManament-WenJian.xml"/>
+        <include file="com/lab307/docmanament/conf/struts-DocManament-WenJianFenLei.xml"/>
+	
+	<constant name="struts.action.excludePattern" value="ws://*"></constant>
+</struts>

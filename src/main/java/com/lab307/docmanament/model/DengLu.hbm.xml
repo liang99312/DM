@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="com.lab307.docmanament.model.DengLuModel" table="t_dl">
+		<id name="ygbh" column="ygbh" type="java.lang.String" length="32">
+			<generator class="assigned"></generator>
+		</id>
+
+		<property
+			name="dlm"
+			column="dlm"
+			type="java.lang.String"
+			length="18"
+		/>
+
+		<property
+			name="dlmm"
+			column="dlmm"
+			type="java.lang.String"
+			length="18"
+		/>
+  </class>
+</hibernate-mapping>

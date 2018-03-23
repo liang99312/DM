@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="WenJian"			namespace="/wj"				extends="struts-default">
+		<global-results>
+			<result name="reLogin">/reLogin.html</result>
+		</global-results>
+
+		<action name="wenJian"						class="WenJianAction"						method="wenJian">
+			<result name="success">/qiYe/wenJian/wenJian.html</result>
+		</action>
+		<action name="cxWj"							class="WenJianAction"						method="cxWenJian"></action>
+                <action name="quWjZl"							class="WenJianAction"						method="quWenJianZiLiao"></action>
+		<action name="zjWj"							class="WenJianAction"						method="zjWenJian"></action>
+		<action name="xgWj"							class="WenJianAction"						method="xgWenJian"></action>
+		<action name="shWj"							class="WenJianAction"						method="shWenJian"></action>
+		<action name="zlWj"							class="WenJianAction"						method="zlWenJian"></action>
+		<action name="qlWj"							class="WenJianAction"						method="qlWenJian"></action>
+                <action name="hfWj"							class="WenJianAction"						method="hfWenJian"></action>
+                <action name="wcscWj"							class="WenJianAction"						method="wcscWenJian"></action>
+                <action name="qxscWj"							class="WenJianAction"						method="qxscWenJian"></action>
+                <action name="wcxzWj"							class="WenJianAction"						method="wcxzWenJian"></action>
+	</package>
+</struts>

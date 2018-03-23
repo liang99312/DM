@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>档案管理系统</title>
+        <link rel="stylesheet" href="/qiYe/zhuoMian/frame.css" type="text/css"/>
+        <script type="text/javascript" src="/js/jquery2.js"></script>
+        <script type="text/javascript" src="/qiYe/zhuoMian/frame.js"></script>
+        <style>
+            .etabs { 
+                margin: 0; 
+                padding: 0; 
+                padding-left: 10px; 
+                height: 29px;
+            }
+            .etabs li{
+                display:inline-block;
+            }
+            .tab { 
+                display: inline-block; 
+                zoom:1; 
+                *display:inline; 
+                background: #eee; 
+                border: solid 1px #999; 
+                border-bottom: none; 
+                -moz-border-radius: 4px 4px 0 0; 
+                -webkit-border-radius: 4px 4px 0 0; 
+            }
+            .tab a { 
+                font-size: 14px; 
+                line-height: 2em; 
+                display: block; 
+                padding: 0 10px; 
+                outline: none; 
+            }
+            .tab a:hover { 
+                text-decoration: underline; 
+            }
+            .tab.active { 
+                background: #d2e3f7; 
+                padding-top: 0px; 
+                position: relative; 
+                top: 1px; 
+                border-color: #666; 
+                z-index: 10;
+            }
+            .tab a.active { 
+                font-weight: bold; 
+            }
+            .tab-container .panel-container { 
+                background: #fff; 
+                border: solid #666 1px; 
+                padding: 10px; 
+                -moz-border-radius: 0 4px 4px 4px; 
+                -webkit-border-radius: 0 4px 4px 4px; 
+            }
+            .panel-container { 
+                margin-bottom: 10px; 
+            }
+            #content li input{
+                border: none;
+                width: 12px;
+                height: 12px;
+                margin-left:15px;
+                background-image: url(/qiYe/images/close_tab.jpg);
+            }
+        </style>
+    </head>
+    <body>
+        <div id="main">
+            <div id="banner">
+                <iframe name="banner_top" name="banner_top" class="yangShi" marginwidth="0" marginheight="0"></iframe>
+            </div>
+
+            <div id="middle">
+                <div id="menu">
+                    <iframe name="menu" marginwidth="0" marginheight="0" topmargin="0" leftmargin="0" height="100%" width="100%" frameborder="0" ></iframe>
+                </div>
+
+                <div id="content" class='tab-container'>
+                    <div id="workspace" style="width: 699px; height: 766px;">
+                    </div>
+                </div>
+            </div>
+
+            <div id="bottom">
+                <iframe name="bottom" class="yangShi" marginwidth="0" height="100%" width="100%" marginheight="0"></iframe>
+            </div>
+        </div>
+    </body>
+</html>

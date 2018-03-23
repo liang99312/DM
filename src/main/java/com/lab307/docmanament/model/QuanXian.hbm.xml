@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.lab307.docmanament.model.QuanXianModel" table="t_qx">
+        <id name="bh" column="bh" type="java.lang.String" length="32">
+            <generator class="assigned"></generator>
+        </id>
+
+        <property
+            name="qybh"
+            column="qybh"
+            type="java.lang.String"
+            length="32"
+        />
+                
+        <property
+            name="wjflbh"
+            column="wjflbh"
+            type="java.lang.String"
+            length="32"
+        />
+                
+        <property
+            name="js"
+            column="js"
+            type="java.lang.String"
+            length="50"
+        />
+                
+        <property
+            name="jsdm"
+            column="jsdm"
+            type="java.lang.String"
+            length="20"
+        />
+
+        <property
+            name="bmbh"
+            column="bmbh"
+            type="java.lang.String"
+            length="32"
+        />
+
+        <property
+            name="cz"
+            column="cz"
+            type="java.lang.String"
+            length="20"
+        />
+
+        <property
+            name="bz"
+            column="bz"
+            type="java.lang.String"
+            length="50"
+        />
+    </class>
+</hibernate-mapping>

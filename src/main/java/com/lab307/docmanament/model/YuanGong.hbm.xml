@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.lab307.docmanament.model.YuanGongModel" table="t_yg">
+		<id name="bh" column="bh" type="java.lang.String" length="32">
+			<generator class="assigned"></generator>
+		</id>
+
+		<property
+			name="qybh"
+			column="qybh"
+			type="java.lang.String"
+			length="32"
+		/>
+
+		<property
+			name="mc"
+			column="mc"
+			type="java.lang.String"
+			length="50"
+		/>
+
+		<property
+			name="dm"
+			column="dm"
+			type="java.lang.String"
+			length="6"
+		/>
+
+		<property
+			name="xb"
+			column="xb"
+			type="java.lang.String"
+			length="10"
+		/>
+
+		<property
+			name="sfzh"
+			column="sfzh"
+			type="java.lang.String"
+			length="18"
+		/>
+
+		<property
+			name="sjhm"
+			column="sjhm"
+			type="java.lang.String"
+			length="11"
+		/>
+
+		<property
+			name="rzsj"
+			column="rzsj"
+			type="java.util.Calendar"
+		/>
+		
+		<property
+			name="zt"
+			column="zt"
+			type="int"
+		/>
+	</class>
+</hibernate-mapping>

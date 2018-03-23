@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta	http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link	rel="stylesheet" type="text/css" href="/qiYe/css/style.css"/>
+        <link	rel="stylesheet" type="text/css" href="/qiYe/wenJian/wenJian.css"/>
+        <script	type="text/javascript" src="/js/jquery2.js"></script>
+        <script	type="text/javascript" src="/js/json2.js"></script>
+        <script	type="text/javascript" src="/js/popMenu.js"></script>
+        <script	type="text/javascript" src="/js/luopan.js"></script>
+        <script	type="text/javascript" src="/js/luopan.form.js"></script>
+        <script	type="text/javascript" src="/js/luopan.data.js"></script>
+        <script	type="text/javascript" src="/js/luopan.list.js"></script>
+        <script type="text/javascript" src="/js/calendar.js"></script>
+        <script	type="text/javascript" src="/qiYe/wenJian/WebSocketUpload.js"></script>
+        <script	type="text/javascript" src="/qiYe/wenJian/WebSocketDownload.js"></script>
+        <script	type="text/javascript" src="/qiYe/wenJian/wenJian.js"></script>
+    </head>
+    <body>
+        <div>
+        </div>
+        <table id="title">
+            <tr>
+                <td id="logo" data-name="400100"></td>
+                <td id="pageTitle">
+                </td>
+            </tr>
+        </table>
+        <div style="width: 100%;">
+            <table id="tblWenJian" class="list" style="table-layout:fixed;width: 100%;">
+                <tr class="biaoTou">
+                    <td>
+                        档案名
+                    </td>
+                    <td>
+                        大小
+                    </td>
+                    <td>
+                        所属客户
+                    </td>
+                    <td>
+                        上传员工
+                    </td>
+                    <td>
+                        上传时间
+                    </td>
+                    <td>
+                        档案状态
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="dvCx4Wj" class="pop">
+            <table id="tblCx4Wj" class="form">
+                <tr>
+                    <td style="width: 120px;" class="title">
+                        档案分类：
+                    </td>
+                    <td>
+                        <input type="text" id="tblCx4Wjfl" />
+                    </td>
+                    </tr>
+                <tr>
+                    <td style="width: 120px;" class="title">
+                        档案名称：
+                    </td>
+                    <td>
+                        <input type="text" id="tblCx4Wj_mc" />
+                    </td>
+                    </tr>
+                <tr>
+                    <td style="width: 120px;" class="title">
+                        状&ensp;&ensp;&ensp;&ensp;态：
+                    </td>
+                    <td>
+                        <select id="dvCx4Fwj_zt" style="width: 200px;">
+                            <option id="dvCx4Fwj_zt_dsh" value="1">待审核</option>
+                            <option id="dvCx4Fwj_zt_shtg" value="9" selected="selected">审核通过</option>
+                            <option id="dvCx4Fwj_zt_shbtg" value="-9">审核不通过</option>
+                            <option id="dvCx4Fwj_zt_yzl" value="-1">已整理</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 120px;" class="title">
+                        上&ensp;传&ensp;人：
+                    </td>
+                    <td>
+                        <input type="text" id="tblCx4Wj_scr" />
+                    </td>
+                    </tr>
+                <tr>
+                    <td style="width: 120px;" class="title">
+                        客&ensp;&ensp;&ensp;&ensp;户：
+                    </td>
+                    <td>
+                        <input type="text" id="tblCx4Wj_kh" />
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 120px;" class="title">
+                        关&ensp;键&ensp;字：
+                    </td>
+                    <td>
+                        <input type="text" id="tblCx4Wj_gjz" />
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 120px;" class="title">
+                        上传时间：
+                    </td>
+                    <td colspan="3">
+                        <input type="text" id="tblCx4Wj_qssj" />到
+                        <input type="text" id="tblCx4Wj_jssj" />
+                    </td>
+                </tr>
+                <tr class="diBian">
+                    <td colspan="4">
+                        <input type="button" value="查询" onclick="javascript:cxWenJian()" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="cd4Da" class="popMenu">
+            <ul>
+                <li id="zjWj" data-name="400120">
+                    上传档案
+                </li>
+                <li id="xgWj" data-name="400210">
+                    修改档案
+                </li>
+                <li id="zlWj" data-name="400140">
+                    整理档案
+                </li>
+                <li id="shWj" data-name="400200">
+                    审核档案
+                </li>
+                <li id="qlWj" data-name="400300">
+                    清理档案
+                </li>
+                <li id="xzWj" data-name="400160">
+                    下载档案
+                </li>
+            </ul>
+        </div>
+        
+        <div id="cd4Download" class="popMenu">
+            <ul>
+                <li id="qxXz">
+                    取消下载
+                </li>
+            </ul>
+        </div>
+        
+        <div id="cd4Upload" class="popMenu">
+            <ul>
+                <li id="qxSc">
+                    取消上传
+                </li>
+            </ul>
+        </div>
+
+        <div id="dvFrmWj" class="pop">
+            <table id="tblFrmWj" class="form">
+                <tr>
+                    <td id="tblFrmWj_mc_lb" class="title">
+                        文&ensp;&ensp;&ensp;&ensp;件：
+                    </td>
+                    <td>
+                        <div class="fileInputContainer">
+                            <input id="fileInput" class="fileInput" type="file" onchange="selectFile(this.files)" />
+                        </div>
+                        <input id="tblFrmWj_mc" type="text" />
+                    </td>
+                    <td id="tblFrmWj_fl_lb" class="title">
+                        档案分类：
+                    </td>
+                    <td>
+                        <input type="text" id="tblFrmWj_fl" />
+                    </td>
+                </tr>
+                <tr>
+                    <td id="tblFrmWj_kh_lb" class="title">
+                        客&ensp;&ensp;&ensp;&ensp;户：
+                    </td>
+                    <td>
+                        <input type="text" id="tblFrmWj_kh" />
+                    </td>
+                    <td id="tblFrmWj_bm_lb" class="title">
+                        部&ensp;&ensp;&ensp;&ensp;门：
+                    </td>
+                    <td>
+                        <input type="text" id="tblFrmWj_bm" />
+                    </td>
+                </tr>
+                <tr>
+                    <td id="tblFrmWj_zz_lb" class="title">
+                        作&ensp;&ensp;&ensp;&ensp;者：
+                    </td>
+                    <td>
+                        <input type="text" id="tblFrmWj_zz" />
+                    </td>
+                    <td id="tblFrmWj_gjz_lb" class="title">
+                        关&ensp;键&ensp;字：
+                    </td>
+                    <td>
+                        <input type="text" id="tblFrmWj_gjz" />
+                    </td>
+                </tr>
+                <tr>
+                    <td id="tblFrmWj_bz_lb" class="title">
+                        备&ensp;&ensp;&ensp;&ensp;注：
+                    </td>
+                    <td colspan="3">
+                        <input type="text" id="tblFrmWj_bz" style="width: 580px;"/>
+                    </td>
+                </tr>
+                <tr class="diBian">
+                    <td colspan="4" style="text-align: center;">
+                        <input id="tblFrmKh_bc" type="button" value="保存"
+                               onclick="javascript:bcWenJian()" />
+                        <input id="tblFrmKh_hf" type="button" value="恢复"
+                               onclick="javascript:hfWenJian()" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="dvFmSh" class="pop">
+            <table id="tblFrmSh" class="form">
+                <tr>
+                    <td id="tblFrmSh_mc_lb" class="title" style="width: 150px;">
+                        文&ensp;件&ensp;名：
+                    </td>
+                    <td>
+                        <input id="tblFrmSh_mc" type="text" readonly="readonly"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="tblFrmSh_shyj_lb" class="title" style="width: 150px;">
+                        审核意见：
+                    </td>
+                    <td>
+                        <select id="tblFrmSh_shyj" style="width: 200px;">
+                            <option value="9">审核通过</option>
+                            <option value="-9">审核不通过</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="tblFrmSh_bz_lb" class="title" style="width: 150px;">
+                        备&ensp;&ensp;&ensp;&ensp;注：
+                    </td>
+                    <td>
+                        <input type="text" id="tblFrmSh_bz" />
+                    </td>
+                </tr>
+                <tr class="diBian">
+                    <td colspan="4" style="text-align: center;">
+                        <input id="tblFrmSh_bc" type="button" value="审核完成" onclick="javascript:bcShenHe()" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="dvFmZl" class="pop">
+            <table id="tblFrmZl" class="form">
+                <tr>
+                    <td id="tblFrmZl_mc_lb" class="title" style="width: 150px;">
+                        文&ensp;件&ensp;名：
+                    </td>
+                    <td>
+                        <input id="tblFrmZl_mc" type="text" readonly="readonly"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="tblFrmZl_bz_lb" class="title" style="width: 150px;">
+                        备&ensp;&ensp;&ensp;&ensp;注：
+                    </td>
+                    <td>
+                        <input type="text" id="tblFrmZl_bz" />
+                    </td>
+                </tr>
+                <tr class="diBian">
+                    <td colspan="4" style="text-align: center;">
+                        <input id="tblFrmZl_bc" type="button" value="整理完成" onclick="javascript:bcZhengLi()"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="board"></div>
+
+        <div id="fmUpload">
+            <div class="header-head">
+                <div class="header-text">
+                    <span class="header-tittle">
+                        <em>档案上传进度</em>
+                    </span>
+                </div>
+                <div class="header-control">
+                    <span class="sicon" id="fmUpload_down">一</span>
+                    <span class="sicon" id="fmUpload_up">口</span>
+                    <span class="sicon" id="fmUpload_close">X</span>
+                </div>
+            </div>
+
+            <table id="tblFileUp">
+                <tr style="background: #e4f0ff; text-align: center;">
+                    <td style="width: 62%;">档案名</td>
+                    <td style="width: 20%;">大小</td>
+                    <td>进度</td>
+                </tr>
+            </table>
+            <table id="tblFileUpWc"></table>
+        </div>
+
+        <div id="fmDownload">
+            <div class="header-head">
+                <div class="header-text">
+                    <span class="header-tittle">
+                        <em>档案下载进度</em>
+                    </span>
+                </div>
+                <div class="header-control">
+                    <span class="sicon" id="fmDownload_down">一</span>
+                    <span class="sicon" id="fmDownload_up">口</span>
+                    <span class="sicon" id="fmDownload_close">X</span>
+                </div>
+            </div>
+
+            <table id="tblFileDown">
+                <tr style="background: #e4f0ff; text-align: center;">
+                    <td style="width: 62%;">档案名</td>
+                    <td style="width: 20%;">大小</td>
+                    <td>进度</td>
+                </tr>
+            </table>
+            <table id="tblFileDownWc"></table>
+        </div>
+
+    </body>
+</html>

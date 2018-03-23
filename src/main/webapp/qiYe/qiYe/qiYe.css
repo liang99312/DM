@@ -1,0 +1,17 @@
+div#dvCx4Qy {
+    top: 36px;
+    z-index: 10;
+    width:400px;
+}
+
+div#dvFrmQy {
+    z-index: 10;
+    width:400px;
+}
+
+input[type=password] {
+    border: 0;
+    width:200px;
+    border-bottom: 1px solid #065E9E;
+    background-color: transparent;
+}

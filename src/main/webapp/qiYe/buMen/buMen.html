@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta	http-equiv="Content-Type"   content="text/html; charset=utf-8" />
+        <link	rel="stylesheet"            href="/qiYe/css/style.css"      type="text/css" />
+        <link	rel="stylesheet"            href="/qiYe/buMen/buMen.css"    type="text/css" />
+        <script	type="text/javascript"      src="/js/jquery2.js"></script>
+        <script	type="text/javascript"      src="/js/json2.js"></script>
+        <script	type="text/javascript"      src="/js/popMenu.js"></script>
+        <script	type="text/javascript"      src="/js/luopan.js"></script>
+        <script	type="text/javascript"      src="/js/luopan.form.js"></script>
+        <script	type="text/javascript"      src="/js/luopan.data.js"></script>
+        <script	type="text/javascript"      src="/js/luopan.list.js"></script>
+        <script	type="text/javascript"      src="/qiYe/buMen/buMen.js"></script>
+    </head>
+    <body>
+        <table id="title">
+            <tr>
+                <td id="logo" data-name="200110"></td>
+                <td id="pageTitle"></td>
+            </tr>
+        </table>
+
+        <div style="width: 100%;">
+            <table id="tblBumen" class="list" style="table-layout:fixed;width: 100%;">
+                <tr class="biaoTou">
+                    <td>
+                        部门名称
+                    </td>
+                    <td>
+                        部门描述
+                    </td>
+                    <td>
+                        部门代码
+                    </td>
+                    <td>
+                        部门状态
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="dvCx4Bm" class="pop">          <!-- 查询 -->
+            <table id="tblCx4Bm" class="form">
+                <tr>
+                    <td style="width: 120px;" class="title">
+                        部门名称：
+                    </td>
+                    <td>
+                        <input type="text" id="tblCx4Bm_mc" />
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 120px;" class="title">
+                        部门状态：
+                    </td>
+                    <td>
+                        <select id="tblCx4Bm_zt">
+                            <option value="1">有效</option>
+                            <option value="-1">无效</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr class="diBian">
+                    <td colspan="2">
+                        <input type="button" value="查询" onclick="javascript:cxBuMen()" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="cd4Bm" class="popMenu">
+            <ul>
+                <li id="zjBm" data-name="200200">
+                    增加部门
+                </li>
+                <li id="xgBm" data-name="200210">
+                    修改部门
+                </li>
+                <li id="scBm" data-name="200220">
+                    删除部门
+                </li>
+                <li id="xgBmyg" data-name="200230">
+                    部门员工
+                </li>
+            </ul>
+        </div>
+
+        <div id="cd4fpYg" class="popMenu">
+            <ul>
+                <li id="scYg">
+                    删除
+                </li>
+            </ul>
+        </div>
+
+        <div id="dvFrmBm" class="pop">
+            <table id="tblFrmBm" class="form">
+                <tr>
+                    <td id="tblFrmBm_mc_lb" class="title" style="width: 150px;">
+                        部门名称：
+                    </td>
+                    <td>
+                        <input type="text" id="tblFrmBm_mc" />
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 120px;" class="title">
+                        部门描述：
+                    </td>
+                    <td>
+                        <input type="text" id="tblFrmBm_ms" />
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 120px;" class="title">
+                        部门代码：
+                    </td>
+                    <td>
+                        <input type="text" id="tblFrmBm_dm" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="title" style="width: 150px;" id="tblFrmBm_yg_lb">部门员工：</td>
+                    <td>
+                        <div style="overflow: auto;overflow-x: hidden; background: none; width: 680px;min-height: 32px;max-height: 400px;">
+                            <div style="overflow: auto;overflow-y: scroll; background: none;width: 700px;min-height: 32px;max-height: 400px;">
+                                <table id="tblBm_bmyg" class="list">
+                                    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                                </table>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="diBian">
+                    <td colspan="4" style="text-align: center;">
+                        <input id="tblFrmBm_bc" type="button" value="保存" onclick="javascript:bcBuMen()" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="divYgXm" style="display: none">
+            <input type="text" style="width: 50px">
+        </div>
+        <div id="board"></div>
+    </body>
+</html>

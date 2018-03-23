@@ -1,0 +1,95 @@
+div#dvCx4Wj{
+    top: 36px;
+    z-index: 10;
+    /*width:400px;*/
+}
+
+table#tblFrmKh_gw tr:first-child td{
+    border-top-width: 0;
+}
+
+table#tblFrmKh_gw tr:last-child td{
+    border-bottom-width: 0;
+}
+
+table#tblFrmKh_gw td{
+    width: 20%;
+}
+
+input[type=password] {
+    border: 0;
+    width:200px;
+    border-bottom: 1px solid #065E9E;
+    background-color: transparent;
+}
+
+.fileInputContainer{
+    width: 200px;
+}
+#fileText{
+    position: relative;
+    width: 200px;
+}
+
+#fmUpload{
+    width: 400px;
+    height: 40px;
+    background: #e9f5fd;
+    border-top-left-radius:10px;
+    border-top-right-radius:10px;
+    position:absolute;
+    right: 0;
+    bottom:0;
+    z-index: 100;
+}
+#fmDownload{
+    width: 400px;
+    height: 40px;
+    border-top-left-radius:10px;
+    border-top-right-radius:10px;
+    position:absolute;
+    right: 405px;
+    bottom:0;
+    z-index: 100;
+    background: #e9f5fd;
+}
+div.header-text{
+    width: 120px;
+    float: left;
+    margin-top: 5px;
+    background: #d2e3f7;
+}
+.header-tittle{
+    font-size: 15px;
+}
+
+div.header-head{
+    border-top-left-radius:10px;
+    border-top-right-radius:10px;
+    width: 400px;
+    float: right;
+    background:  #d2e3f7;
+}
+
+div.header-control{
+    width: 50px;
+    float: right;
+    margin-right: 15px;
+    margin-top: 5px;
+    background: #d2e3f7;
+}
+.sicon:hover{
+    background: #ff3366;
+    cursor:default;
+}
+#tblFileUp, #tblFileDown, #tblFileDownWc, #tblFileUpWc{
+    table-layout: fixed;
+    width: 100%;
+    display: none;
+}
+#tblFileUp td, #tblFileDown td, #tblFileDownWc td, #tblFileUpWc td{
+    white-space: nowrap;
+    overflow: hidden;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+}

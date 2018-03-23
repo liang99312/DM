@@ -1,0 +1,54 @@
+﻿
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="/qiYe/zhuoMian/caiDan.css" type="text/css"/>
+        <script type="text/javascript" src="/js/jquery2.js"></script>
+        <script type="text/javascript" src="/qiYe/zhuoMian/caiDan.js"></script>
+    </head>
+
+    <body>
+        <div id="dvCaiDan">
+            <dl id="dt1">
+
+                <dt id="100000"><div>员工管理</div></dt>
+                <dd>
+                    <ul>
+                        <li id="101000" onclick="javascript:gzq('员工管理','/yg/yuanGong.do','101000')">员工管理</li>
+                    </ul>
+                </dd>
+                <dt id="200000"><div>部门管理</div></dt>
+                <dd>
+                    <ul>
+                        <li id="201000" onclick="javascript:gzq('部门管理','/bm/buMen.do','201000')">部门管理</li>
+                    </ul>
+                </dd>
+                <dt id="300000"><div>客户管理</div></dt>
+                <dd>
+                    <ul>
+                        <li id="301000" onclick="javascript:gzq('客户管理','/kh/keHu.do','301000')">客户管理</li>
+                    </ul>
+                </dd>
+
+                <dt id="400000"><div>档案管理</div></dt>
+                
+                <dd>
+                    <ul>
+                        <li id="401000" onclick="javascript:gzq('档案分类','/wjfl/wenJianFenLei.do','401000')">档案分类</li>
+                        <li id="402000" onclick="javascript:gzq('档案管理','/wj/wenJian.do','402000')">档案管理</li>
+                    </ul>
+                </dd>  
+                
+                <dt id="900000"><div>系统设置</div></dt>
+                
+                <dd>
+                    <ul>
+                        <li id="901000" onclick="javascript:gzq('修改密码','/yg/mm.do','901000')">修改密码</li>
+                        <li id="902000" onclick="javascript:exit()">退出系统</li>
+                    </ul>
+                </dd>  
+            </dl>
+        </div>
+    </body>
+</html>
